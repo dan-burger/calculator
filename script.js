@@ -64,12 +64,15 @@ clear.addEventListener("click", () => {
     clearScreen = false;
 });
 
+//adds listener for every operator button
 operators.forEach(operator=>operator.addEventListener('click',operatorClicked));
 
+//saves the last button clicked
 allElements.addEventListener('click', (e) => {
     lastClick = e.target.classList.value;
 })
 
+//delete listener
 del.addEventListener("click", () => {
     display.textContent = display.textContent.substring(0, display.textContent.length - 1);
 });
@@ -81,6 +84,8 @@ equal.addEventListener("click", () => {
 });
 
 */
+
+//grabs the operator that is clicked then evaluates
 function operatorClicked(e){
     let clickedOperator = e.target.textContent;
     operatorCaptured(clickedOperator);
@@ -130,10 +135,12 @@ function numClick(num) {
     console.log(lastClick);
 }
 
+//shows message when number is  too big
 function displayRestartMessage() {
-    display.textContent = "Number too long. Press C.";
+    display.textContent = "Number too large.";
 }
 
+//displays the result of operations
 function displayResult() {
     display.textContent = result;
     if (display.textContent.length > 15) {

@@ -2,9 +2,10 @@ h1{
     text-align: center;
 }
 
+
 .display{
-    width: 242px;
-    height: 40px;
+    width: 498px;
+    height: 80px;
     background-color: lightgray;
     display: flex;
     margin-left: 3px;
@@ -12,7 +13,7 @@ h1{
     display: flex;
     justify-content: flex-end;
     align-items:flex-end;
-    font-size: 32px;
+    font-size: 64px;
     padding: 4px;
 }
 
@@ -23,15 +24,19 @@ h1{
 .calculator{
     margin-left: auto;
     margin-right: auto;
-    height:275px;
-    width: 259px;
+    height:540px;
+    width: 515px;
     padding: 6px;
     background-color: grey;
 }
 
+.operator{
+    background-color: orange;
+}
+
 button{
-    width: 60px;
-    height: 40px;
+    width: 124px;
+    height: 85px;
     margin-bottom: 4px;
     font-size: 20px;
     border: 1px solid black;
@@ -45,10 +50,12 @@ button:active {
     transform: translateY(4px);
   }
 
-.clear{
-    width: 124px;
+.clear, .del{
+    width: 252px;
+    background-color: lightpink;
 }
 
-.del{
-    width: 124px;
+
+.equals{
+    background-color: lightblue;
 }
