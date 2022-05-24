@@ -12,6 +12,7 @@ let clear = document.querySelector(".clear");
 let del = document.querySelector(".del");
 let equal = document.querySelector(".equals");
 let decimalButton = document.querySelector(".decimal");
+let operators = document.querySelectorAll(".operator");
 
 
 //main operation function once equals is clicked
@@ -63,6 +64,8 @@ clear.addEventListener("click", () => {
     clearScreen = false;
 });
 
+operators.forEach(operator=>operator.addEventListener('click',operatorClicked));
+
 allElements.addEventListener('click', (e) => {
     lastClick = e.target.classList.value;
 })
@@ -71,30 +74,34 @@ del.addEventListener("click", () => {
     display.textContent = display.textContent.substring(0, display.textContent.length - 1);
 });
 
+/*
 equal.addEventListener("click", () => {
     secondValue = display.textContent;
     display.textContent = operate(operator, firstValue, secondValue);
-    console.log(operator);
-    console.log(firstValue);
-    console.log(secondValue)
 });
 
-function signClick(sign) {
+*/
+function operatorClicked(e){
+    let clickedOperator = e.target.textContent;
+    operatorCaptured(clickedOperator);
+}
+
+function operatorCaptured(e){
     decimalButton.disabled = false;
-    if (display.textContent.includes("restart")) {
+    if(display.textContent.includes("restart")){
         displayRestartMessage();
     }
-    if (operator == "" || operator == "=" || lastClick == "add" || lastClick == "multiply" || lastClick == "subtract" || lastClick == "divide"|| operator == "Enter") {
-        operator = sign;
+    if(operator==""||operator=="="||lastClick=="operator"||operator=="Enter"){
+        operator = e;
         firstValue = parseFloat(display.textContent);
         clearScreen = true;
     }
-    else {
+    else{
         secondValue = parseFloat(display.textContent);
-        operate(operator, firstValue, secondValue);
+        result = operate(operator,firstValue,secondValue);
         result = Math.round((result + Number.EPSILON) * 10000) / 10000; //rounds to 4 decimal places
         displayResult();
-        operator = sign;
+        operator = e;
         firstValue = result;
         result = 0;
         clearScreen = true;
@@ -124,7 +131,7 @@ function numClick(num) {
 }
 
 function displayRestartMessage() {
-    display.textContent = "Number too long. CLEAR to restart.";
+    display.textContent = "Number too long. Press C.";
 }
 
 function displayResult() {
@@ -133,6 +140,6 @@ function displayResult() {
         displayRestartMessage();
     }
     else if (isNaN(result)) {
-        display.textContent = "Don't be mean. CLEAR to restart";
+        display.textContent = "undefined";
     }
 }
