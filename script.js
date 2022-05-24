@@ -77,13 +77,6 @@ del.addEventListener("click", () => {
     display.textContent = display.textContent.substring(0, display.textContent.length - 1);
 });
 
-/*
-equal.addEventListener("click", () => {
-    secondValue = display.textContent;
-    display.textContent = operate(operator, firstValue, secondValue);
-});
-
-*/
 
 //grabs the operator that is clicked then evaluates
 function operatorClicked(e){
@@ -132,7 +125,6 @@ function numClick(num) {
     if (display.textContent.includes(".")) {
         decimalButton.disabled = true;
     }
-    console.log(lastClick);
 }
 
 //shows message when number is  too big
